@@ -1,0 +1,21 @@
+body {
+  background-color: #fafdfb !important;
+  font-size: 15px;
+  font-weight: 300;
+  color: #212121;
+  font-family: "Roboto Condensed", sans-serif;
+}
+.BetweenTwoSection {
+  margin-top: 60px;
+  margin-bottom: 6px;
+}
+.TopSection {
+  margin-top: 70px;
+}
+
+.goog-te-banner-frame {
+  top: initial;
+  bottom: 0;
+  display: none;
+}
+/* .goog-te-combo, .goog-te-banner *, .goog-te-ftab *, .goog-te-menu *, .goog-te-menu2 *, .goog-te-balloon * */

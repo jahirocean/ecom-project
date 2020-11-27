@@ -1,0 +1,106 @@
+@media (max-width: 374.98px) {
+  .section-title {
+    font-size: 18px;
+  }
+  .section-sub-title {
+    font-size: 13px;
+  }
+  .product_name_on_card {
+    font-size: 14px;
+  }
+  .product_price_on_card {
+    font-size: 13px;
+  }
+  .Mobile {
+  }
+  .Desktop {
+    display: none;
+  }
+  body {
+    font-size: 14px;
+  }
+  .TopSection {
+    margin-top: 60px;
+  }
+  .slider_img {
+    height: 180px;
+  }
+}
+@media (min-width: 375.98px) and (max-width: 575.98px) {
+  .section-title {
+    font-size: 18px;
+  }
+  .section-sub-title {
+    font-size: 13px;
+  }
+  .product_name_on_card {
+    font-size: 14px;
+  }
+  .product_price_on_card {
+    font-size: 13px;
+  }
+  .Mobile {
+  }
+  .Desktop {
+    display: none;
+  }
+  .TopSection {
+    margin-top: 60px;
+  }
+  .slider_img {
+    height: 180px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .section-title {
+    font-size: 18px;
+  }
+  .section-sub-title {
+    font-size: 13px;
+  }
+  .product_name_on_card {
+    font-size: 14px;
+  }
+  .product_price_on_card {
+    font-size: 13px;
+  }
+  .Mobile {
+  }
+  .Desktop {
+    display: none;
+  }
+  .slider_img {
+    height: 180px;
+  }
+  .TopSection {
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .section-sub-title {
+    font-size: 13px;
+  }
+  .Mobile {
+    display: none;
+  }
+  .Desktop {
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .Mobile {
+    display: none;
+  }
+  .Desktop {
+  }
+}
+
+@media (min-width: 1200px) {
+  .Mobile {
+    display: none;
+  }
+  .Desktop {
+  }
+}

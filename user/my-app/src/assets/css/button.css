@@ -1,0 +1,14 @@
+.btn {
+  border-radius: 0% !important;
+}
+.btn:focus {
+  box-shadow: none;
+}
+.site_btn {
+  font-weight: 300;
+  font-family: "Roboto Condensed", sans-serif;
+  color: white !important;
+  background: #e43023 !important;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,67 @@
+.accordionMenuDivMobile {
+  width: 100%;
+  direction: rtl;
+  font-family: "Roboto Condensed", sans-serif !important;
+  font-weight: 300 !important;
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #e9e9e9 #ffffff;
+}
+.accordionMenuDivInsideMobile {
+  direction: ltr;
+}
+.accordionMobile {
+  background-color: #ffffff;
+  color: #444;
+  cursor: pointer;
+  padding: 7px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 300;
+  font-family: "Roboto Condensed ", sans-serif !important;
+  transition: 0.4s;
+  overflow: paged-y;
+  box-shadow: 0 0 2px 0 rgba(57, 78, 234, 0.3);
+}
+
+.active,
+.accordionMobile:hover {
+  color: #ffffff;
+  font-weight: 400;
+  background-color: #f59315;
+  border: none;
+  outline: none;
+}
+.accordionMobile:after {
+  content: "\276F";
+  color: #444444;
+  float: right;
+}
+.active:after,
+hover {
+  content: "\276E";
+  color: #ffffff;
+}
+.accordionMenuIconMobile {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+.panelMobile {
+  padding: 0 10px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordionItemMobile {
+  color: #444;
+  text-decoration: none;
+}
+.accordionItemMobile:hover {
+  text-decoration: none;
+  color: tomato;
+}
