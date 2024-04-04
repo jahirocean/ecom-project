@@ -1,7 +1,80 @@
 import React, { Component, Fragment } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import validation from "../../validation/validation";
+import axios from "axios";
+import ApiURL from "../../api/ApiURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Contact extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      mobile: "",
+      msg: "",
+    };
+  }
+
+  nameOnChange = (event) => {
+    let name = event.target.value;
+
+    this.setState({ name: name });
+  };
+  mobileOnChange = (event) => {
+    let mobile = event.target.value;
+
+    this.setState({ mobile: mobile });
+  };
+  msgOnChange = (event) => {
+    let msg = event.target.value;
+
+    this.setState({ msg: msg });
+  };
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    let name = this.state.name;
+    let mobile = this.state.mobile;
+    let msg = this.state.msg;
+    let sendBtn = document.getElementById("sendBtn");
+    let contactForm = document.getElementById("contactForm");
+
+    if (name.length == 0) {
+      toast.error("Name is empty");
+    } else if (mobile.length == 0) {
+      toast.error("Mobile number is empty");
+    } else if (!validation.NameRegx.test(name)) {
+      toast.error("Name is invalid");
+    } else if (!validation.MobileRegx.test(mobile)) {
+      toast.error("Mobile is invalid");
+    } else if (msg.length == 0) {
+      toast.error("Message is empty");
+    } else {
+      sendBtn.innerHTML = "Sending...";
+      let MyFormData = new FormData();
+      MyFormData.append("name", name);
+      MyFormData.append("mobile", mobile);
+      MyFormData.append("msg", msg);
+
+      axios
+        .post(ApiURL.SendContactDetails, MyFormData)
+        .then(function (response) {
+          if (response.status == 200 && response.data == 1) {
+            sendBtn.innerHTML = "Send";
+            toast.success("Contact information send successfully!!");
+            contactForm.reset();
+          } else {
+            toast.error("Somethin went wrong");
+            sendBtn.innerHTML = "Send";
+          }
+        })
+        .catch(function (error) {
+          toast.error("Somethin went wrong");
+          sendBtn.innerHTML = "Send";
+        });
+    }
+  };
   render() {
     return (
       <Fragment>
@@ -22,28 +95,41 @@ class Contact extends Component {
                   sm={12}
                   xs={12}
                 >
-                  <Form className="onboardForm">
+                  <Form
+                    id="contactForm"
+                    onSubmit={this.onFormSubmit}
+                    className="onboardForm"
+                  >
                     <h4 className="section-title">CONTACT WITH US</h4>
                     <h6 className="section-sub-title">
                       Plese Enter Your Mobile No, And Go Next
                     </h6>
                     <input
+                      onChange={this.nameOnChange}
                       type="text"
                       placeholder="Your Name"
                       className="form-control m-2"
                     />
                     <input
-                      type="text"
+                      onChange={this.mobileOnChange}
+                      type="number"
                       placeholder="Mobile Number"
                       className="form-control ml-2"
                     />
                     <input
+                      onChange={this.msgOnChange}
                       type="text"
                       placeholder="Message"
                       className="form-control m-2"
                     />
 
-                    <Button className="btn btn-block m-2 site_btn">Send</Button>
+                    <Button
+                      id="sendBtn"
+                      type="submit"
+                      className="btn btn-block m-2 site_btn"
+                    >
+                      Send
+                    </Button>
                   </Form>
                 </Col>
                 <Col
@@ -61,6 +147,7 @@ class Contact extends Component {
               </Row>
             </Col>
           </Row>
+          <ToastContainer />
         </Container>
       </Fragment>
     );

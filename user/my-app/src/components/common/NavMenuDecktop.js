@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class NavMenuDecktop extends Component {
+  constructor() {
+    super();
+    this.state = {
+      SearchKey: "",
+      searchRedirectStatus: false,
+    };
+    this.SearchOnChange = this.SearchOnChange.bind(this);
+    this.SearchOnClick = this.SearchOnClick.bind(this);
+    this.SearchRedirect = this.SearchRedirect.bind(this);
+  }
+
+  SearchOnChange = (event) => {
+    let keyValue = event.target.value;
+    this.setState({ SearchKey: keyValue });
+  };
+
+  SearchOnClick = () => {
+    let SearchKey = this.state.SearchKey;
+    if (SearchKey.length >= 2) {
+      this.setState({ searchRedirectStatus: true });
+    }
+  };
+  SearchRedirect = () => {
+    if (this.state.searchRedirectStatus === true) {
+      return <Redirect to={"/ProductListBySearch/" + this.state.SearchKey} />;
+    }
+  };
   render() {
     return (
       <Container className="fixed-top shadow-sm p-2 m-0 bg-white" fluid={true}>
@@ -20,11 +47,16 @@ class NavMenuDecktop extends Component {
           <Col className="p-1" lg={4} md={4} sm={12} xs={12}>
             <div className="input-group w-100">
               <input
+                onChange={this.SearchOnChange}
                 type="text"
                 className="form-control"
                 aria-label="Text input with segmented dropdown button"
               />
-              <button type="button" className="btn site_btn">
+              <button
+                onClick={this.SearchOnClick}
+                type="button"
+                className="btn site_btn"
+              >
                 <i className="fa fa-search"></i>
               </button>
             </div>
@@ -54,6 +86,7 @@ class NavMenuDecktop extends Component {
             </Link>
           </Col>
         </Row>
+        {this.SearchRedirect()}
       </Container>
     );
   }

@@ -9,7 +9,7 @@ export class HomeTopMobile extends Component {
         <Container fluid={true} className=" p-0 TopSection overflow-hidden">
           <Row className="p-0 m-0 overflow-hidden">
             <Col className="p-0 m-0 overflow-hidden" lg={12} md={12} sm={12}>
-              <SliderHome />
+              {/* <SliderHome /> */}
             </Col>
           </Row>
         </Container>
